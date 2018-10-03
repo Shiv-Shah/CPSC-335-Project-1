@@ -1,0 +1,15 @@
+    /*
+    Pseudocode
+    for r in size - 2 do 
+      for c = r in size-2 do
+        if get(i) == get(i+1)
+          // do nothing 
+        else
+          // swap(get(i),get(i+1))
+      for c = r in size-2 do
+        if get(i) == get(i+1)
+          // do nothing 
+        else
+          // swap(get(i),get(i+1))
+
+   */

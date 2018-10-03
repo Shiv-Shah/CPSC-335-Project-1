@@ -201,9 +201,9 @@ sorted_disks sort_left_to_right(const disk_state& before) {
   disk_state after = before;
   for(unsigned int r = 0; r < after.total_count(); r++)
   {
-    for(unsigned int c = r; after.total_count()-1; c++)
+    for(unsigned int c = 0; c < after.total_count()-1; c++)
     {
-      if(after.get(c) == DISK_DARK && after.get(c+1 == DISK_LIGHT))
+      if(after.get(c) == DISK_DARK && after.get(c+1) == DISK_LIGHT)
       {
         after.swap(c);
         counter++;
@@ -251,31 +251,21 @@ disk_state after = before;
 int size = after.total_count();
 for( int c = 0; c < size; c++)
 {
-  for( int i = 0; i < size-1;i++)
+  for( int i = c; i < size-1;i++)
   {
-    if(after.get(i) == DISK_DARK &&  after.get(i+1)!= DISK_LIGHT)
+    if(after.get(i) == DISK_DARK &&  after.get(i+1) == DISK_LIGHT)
     {
-
-    }
-    else
-    {
-      //before.swap(get(c));
       after.swap(i);
       counter++;
-
     }
+
   }
   size--;
   for( int t = size-1; t > c; t--)
   {
-    if(after.get(t) == DISK_DARK &&  after.get(t-1) == DISK_LIGHT)
+    if(after.get(t) == DISK_LIGHT &&  after.get(t-1) == DISK_DARK)
     {
-
-    }
-    else
-    {
-      //before.swap(get(c));
-      after.swap(-1);
+      after.swap(t-1);
       counter++;
     }
   }
